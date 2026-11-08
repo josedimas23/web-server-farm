@@ -15,7 +15,7 @@ services:
     ports:
       - "8080:443"
     cap_add:
-      - NET_ADMIN  
+      - NET_ADMIN
   web2:
     build:
       context: .
@@ -28,11 +28,11 @@ services:
       red_web:
         ipv4_address: 192.168.10.3
       red_servicios:
-        ipv4_address: 192.168.20.3    
+        ipv4_address: 192.168.20.3
     ports:
       - "8081:443"
     cap_add:
-      - NET_ADMIN             
+      - NET_ADMIN
   web3:
     build:
       context: .
@@ -45,11 +45,11 @@ services:
       red_web:
         ipv4_address: 192.168.10.4
       red_servicios:
-        ipv4_address: 192.168.20.4    
+        ipv4_address: 192.168.20.4
     ports:
       - "8082:443"
     cap_add:
-      - NET_ADMIN  
+      - NET_ADMIN
   web4:
     build:
       context: .
@@ -62,11 +62,11 @@ services:
       red_web:
         ipv4_address: 192.168.10.5
       red_servicios:
-        ipv4_address: 192.168.20.5    
+        ipv4_address: 192.168.20.5
     ports:
       - "8083:443"
     cap_add:
-      - NET_ADMIN  
+      - NET_ADMIN
   web5:
     build:
       context: .
@@ -79,11 +79,11 @@ services:
       red_web:
         ipv4_address: 192.168.10.6
       red_servicios:
-        ipv4_address: 192.168.20.6    
+        ipv4_address: 192.168.20.6
     ports:
       - "8084:443"
     cap_add:
-      - NET_ADMIN  
+      - NET_ADMIN
   web6:
     build:
       context: .
@@ -96,11 +96,11 @@ services:
       red_web:
         ipv4_address: 192.168.10.7
       red_servicios:
-        ipv4_address: 192.168.20.7    
+        ipv4_address: 192.168.20.7
     ports:
       - "8085:443"
     cap_add:
-      - NET_ADMIN       
+      - NET_ADMIN
   web7:
     build:
       context: .
@@ -113,11 +113,11 @@ services:
       red_web:
         ipv4_address: 192.168.10.8
       red_servicios:
-        ipv4_address: 192.168.20.8    
+        ipv4_address: 192.168.20.8
     ports:
       - "8086:443"
     cap_add:
-      - NET_ADMIN  
+      - NET_ADMIN
   web8:
     build:
       context: .
@@ -130,11 +130,11 @@ services:
       red_web:
         ipv4_address: 192.168.10.9
       red_servicios:
-        ipv4_address: 192.168.20.9    
+        ipv4_address: 192.168.20.9
     ports:
       - "8087:443"
     cap_add:
-      - NET_ADMIN 
+      - NET_ADMIN
 
   balanceador-nginx-ssl:
     build:
@@ -157,14 +157,12 @@ services:
       - web7
       - web8
     ports:
-      - "8089:443"         
- 
+      - "8089:443"
+
 networks:
+  # Shared with the load tests; created by `make network` (subnet 192.168.10.0/24)
   red_web:
     external: true
-    ipam:
-      config:
-        - subnet: 192.168.10.0/24
   red_servicios:
     ipam:
       config:

@@ -5,7 +5,7 @@ services:
       - "8090:8089"
     volumes:
       - ./:/mnt/locust
-    command: -f /mnt/locust/locustfile.py --master -H https://192.168.10.50:443/
+    command: -f /mnt/locust/locustfile.py --master -H https://192.168.10.50:443
     networks:
       red_web:
         ipv4_address: 192.168.10.70

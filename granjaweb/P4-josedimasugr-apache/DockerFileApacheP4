@@ -1,4 +1,4 @@
-#Descargamso imagen de ubuntu 
+#Descargamos imagen de ubuntu
 FROM ubuntu:20.04
 
 #Quien la creo

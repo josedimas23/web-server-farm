@@ -8,11 +8,11 @@ LABEL maintainer="josedimas23"
 ENV DEBIAN_FRONTEND=noninteractive
 
 #Instalar lo necesario
-RUN apt-get update && apt-get install apache2 php libapache2-mod-php curl -y
+RUN apt-get update && apt-get install -y --no-install-recommends apache2-utils && rm -rf /var/lib/apt/lists/*
 
 #variable de entorno con la URL del servidor
 ENV SERVER_URL=https://192.168.10.50:443/
 
 #Comando que se ejecutara al iniciar el contenedor
-CMD ["ab", "-n", "10000", "-c", "100", "$SERVER_URL"]
+CMD ab -n 10000 -c 100 "$SERVER_URL"
 

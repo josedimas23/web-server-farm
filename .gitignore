@@ -1,10 +1,21 @@
+# macOS / editors
 .DS_Store
-# Claves privadas de los certificados: solo en local
+.idea/
+.vscode/
+
+# Certificates and private keys: generated locally with `make certs`
+granjaweb/P4-josedimasugr-certificados/*
+!granjaweb/P4-josedimasugr-certificados/.gitkeep
 *.key
 *.csr
-# Memorias con DNI: solo en local
-docs/P1.pdf
-docs/P2.pdf
-docs/P4.pdf
-# Transparencias de la asignatura (material de la UGR): no publicar
-docs/TrabajoFinal.pdf
+*.crt
+
+# Advanced P3 exercise certificates (sub-CA): local only
+granjaweb/certf_P3_avanzado/
+
+# Course material and reports with personal data: local only
+docs/
+
+# Python bytecode (generated when Locust mounts its folder)
+__pycache__/
+*.pyc

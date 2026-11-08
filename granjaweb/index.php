@@ -10,5 +10,3 @@
     <p>La dirección del servidor Apache es: <?php echo $_SERVER['SERVER_ADDR']; ?></p>
 </body>
 </html>
-
-
