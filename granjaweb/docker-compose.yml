@@ -1,4 +1,3 @@
-version: '5'
 services:
   web1:
     build:
@@ -6,7 +5,7 @@ services:
       dockerfile: ./P4-josedimasugr-apache/DockerFileApacheP4
     image: josedimasugr-apache-image:p5
     volumes:
-      - ./:/var/www/html/
+      - ./index.php:/var/www/html/index.php
       - ./P4-josedimasugr-certificados:/etc/apache2/ssl/
     networks:
       red_web:
@@ -23,7 +22,7 @@ services:
       dockerfile: ./P4-josedimasugr-apache/DockerFileApacheP4
     image: josedimasugr-apache-image:p5
     volumes:
-      - ./:/var/www/html/
+      - ./index.php:/var/www/html/index.php
       - ./P4-josedimasugr-certificados:/etc/apache2/ssl/
     networks:
       red_web:
@@ -40,7 +39,7 @@ services:
       dockerfile: ./P4-josedimasugr-apache/DockerFileApacheP4
     image: josedimasugr-apache-image:p5
     volumes:
-      - ./:/var/www/html/
+      - ./index.php:/var/www/html/index.php
       - ./P4-josedimasugr-certificados:/etc/apache2/ssl/
     networks:
       red_web:
@@ -57,7 +56,7 @@ services:
       dockerfile: ./P4-josedimasugr-apache/DockerFileApacheP4
     image: josedimasugr-apache-image:p5
     volumes:
-      - ./:/var/www/html/
+      - ./index.php:/var/www/html/index.php
       - ./P4-josedimasugr-certificados:/etc/apache2/ssl/
     networks:
       red_web:
@@ -74,7 +73,7 @@ services:
       dockerfile: ./P4-josedimasugr-apache/DockerFileApacheP4
     image: josedimasugr-apache-image:p5
     volumes:
-      - ./:/var/www/html/
+      - ./index.php:/var/www/html/index.php
       - ./P4-josedimasugr-certificados:/etc/apache2/ssl/
     networks:
       red_web:
@@ -91,7 +90,7 @@ services:
       dockerfile: ./P4-josedimasugr-apache/DockerFileApacheP4
     image: josedimasugr-apache-image:p5
     volumes:
-      - ./:/var/www/html/
+      - ./index.php:/var/www/html/index.php
       - ./P4-josedimasugr-certificados:/etc/apache2/ssl/
     networks:
       red_web:
@@ -108,7 +107,7 @@ services:
       dockerfile: ./P4-josedimasugr-apache/DockerFileApacheP4
     image: josedimasugr-apache-image:p5
     volumes:
-      - ./:/var/www/html/
+      - ./index.php:/var/www/html/index.php
       - ./P4-josedimasugr-certificados:/etc/apache2/ssl/
     networks:
       red_web:
@@ -125,7 +124,7 @@ services:
       dockerfile: ./P4-josedimasugr-apache/DockerFileApacheP4
     image: josedimasugr-apache-image:p5
     volumes:
-      - ./:/var/www/html/
+      - ./index.php:/var/www/html/index.php
       - ./P4-josedimasugr-certificados:/etc/apache2/ssl/
     networks:
       red_web:

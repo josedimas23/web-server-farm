@@ -75,5 +75,6 @@ iptables -A INPUT -f -j DROP
 
 #Guardarlas
 
+mkdir -p /etc/iptables
 iptables-save > /etc/iptables/rules.v4
 
