@@ -8,7 +8,7 @@ A containerized web server farm: an Nginx HTTPS load balancer in front of eight 
 ![PHP](https://img.shields.io/badge/PHP-777BB4?style=flat-square&logo=php&logoColor=white)
 ![Bash](https://img.shields.io/badge/iptables_(Bash)-4EAA25?style=flat-square&logo=gnubash&logoColor=white)
 ![OpenSSL](https://img.shields.io/badge/OpenSSL-721412?style=flat-square&logo=openssl&logoColor=white)
-![Locust](https://img.shields.io/badge/Locust-2C2C2C?style=flat-square&logo=python&logoColor=white)
+![Locust](https://img.shields.io/badge/Locust-2C2C2C?style=flat-square&logo=locust&logoColor=white)
 
 ## Architecture
 
