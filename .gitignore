@@ -1,0 +1,10 @@
+.DS_Store
+# Claves privadas de los certificados: solo en local
+*.key
+*.csr
+# Memorias con DNI: solo en local
+docs/P1.pdf
+docs/P2.pdf
+docs/P4.pdf
+# Transparencias de la asignatura (material de la UGR): no publicar
+docs/TrabajoFinal.pdf

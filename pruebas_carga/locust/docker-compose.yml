@@ -1,0 +1,27 @@
+services:
+  master-josedimasugr:
+    image: locustio/locust
+    ports:
+      - "8090:8089"
+    volumes:
+      - ./:/mnt/locust
+    command: -f /mnt/locust/locustfile.py --master -H https://192.168.10.50:443/
+    networks:
+      red_web:
+        ipv4_address: 192.168.10.70
+
+  worker-josedimasugr:
+    image: locustio/locust
+    volumes:
+      - ./:/mnt/locust
+    command: -f /mnt/locust/locustfile.py --worker --master-host master-josedimasugr
+    depends_on:
+     - master-josedimasugr
+    deploy:
+      replicas: 5
+    networks:
+      - red_web
+
+networks:
+  red_web:
+    external: true

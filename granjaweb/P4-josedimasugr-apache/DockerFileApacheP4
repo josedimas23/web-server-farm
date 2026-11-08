@@ -1,0 +1,48 @@
+#Descargamso imagen de ubuntu 
+FROM ubuntu:20.04
+
+#Quien la creo
+LABEL maintainer="josedimas23"
+
+#Evita preguntas para la instalacion
+ENV DEBIAN_FRONTEND=noninteractive
+
+#Actualizamos y instalamos apache2, PHP y herramientas para su interconexion
+RUN apt-get update && apt-get install apache2 php libapache2-mod-php curl -y
+
+#Herramientas de Red y iptables
+RUN apt-get install -y iproute2 iputils-ping iptables
+
+#Instalar módulo y habilitar sitio SSL por defecto y crear directorio para certificados
+RUN a2enmod ssl && a2ensite default-ssl && mkdir /etc/apache2/ssl
+
+#Copiar certificado y clave privada
+COPY P4-josedimasugr-certificados/certificado_josedimasugr.crt /etc/apache2/ssl/certificado_josedimasugr.crt
+COPY P4-josedimasugr-certificados/certificado_josedimasugr.key /etc/apache2/ssl/certificado_josedimasugr.key
+
+#Copiar los Scripts iptables
+COPY ./P4-josedimasugr-apache/entrypoint.sh /entrypoint.sh
+COPY ./P4-josedimasugr-apache/josedimasugr-iptables-web/josedimasugr-iptables-web.sh /josedimasugr-iptables-web.sh
+
+# Dar permisos de ejecución a los scripts
+RUN chmod +x /entrypoint.sh /josedimasugr-iptables-web.sh
+
+# Configurar el script de entrada
+ENTRYPOINT ["/entrypoint.sh"]
+
+#Configurar los permisos adecuados
+    #Permisos de lectura y escritura
+    #Ningún otro usuario tiene permisos sobre el archivo
+RUN chmod 600 /etc/apache2/ssl/certificado_josedimasugr.crt
+
+#Incluir la configuración SSL
+COPY P4-josedimasugr-apache/josedimasugr-apache-ssl.conf /etc/apache2/sites-available/josedimasugr-apache-ssl.conf
+
+#Se copia el index.php para que cada maquina que se cree lo tenga
+COPY index.php /var/www/html/
+
+#Exponer el puerto HTTPS
+EXPOSE 443 80
+
+#Inicia el servidor Apache en primer plano
+CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]

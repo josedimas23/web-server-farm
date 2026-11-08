@@ -1,0 +1,172 @@
+version: '5'
+services:
+  web1:
+    build:
+      context: .
+      dockerfile: ./P4-josedimasugr-apache/DockerFileApacheP4
+    image: josedimasugr-apache-image:p5
+    volumes:
+      - ./:/var/www/html/
+      - ./P4-josedimasugr-certificados:/etc/apache2/ssl/
+    networks:
+      red_web:
+        ipv4_address: 192.168.10.2
+      red_servicios:
+        ipv4_address: 192.168.20.2
+    ports:
+      - "8080:443"
+    cap_add:
+      - NET_ADMIN  
+  web2:
+    build:
+      context: .
+      dockerfile: ./P4-josedimasugr-apache/DockerFileApacheP4
+    image: josedimasugr-apache-image:p5
+    volumes:
+      - ./:/var/www/html/
+      - ./P4-josedimasugr-certificados:/etc/apache2/ssl/
+    networks:
+      red_web:
+        ipv4_address: 192.168.10.3
+      red_servicios:
+        ipv4_address: 192.168.20.3    
+    ports:
+      - "8081:443"
+    cap_add:
+      - NET_ADMIN             
+  web3:
+    build:
+      context: .
+      dockerfile: ./P4-josedimasugr-apache/DockerFileApacheP4
+    image: josedimasugr-apache-image:p5
+    volumes:
+      - ./:/var/www/html/
+      - ./P4-josedimasugr-certificados:/etc/apache2/ssl/
+    networks:
+      red_web:
+        ipv4_address: 192.168.10.4
+      red_servicios:
+        ipv4_address: 192.168.20.4    
+    ports:
+      - "8082:443"
+    cap_add:
+      - NET_ADMIN  
+  web4:
+    build:
+      context: .
+      dockerfile: ./P4-josedimasugr-apache/DockerFileApacheP4
+    image: josedimasugr-apache-image:p5
+    volumes:
+      - ./:/var/www/html/
+      - ./P4-josedimasugr-certificados:/etc/apache2/ssl/
+    networks:
+      red_web:
+        ipv4_address: 192.168.10.5
+      red_servicios:
+        ipv4_address: 192.168.20.5    
+    ports:
+      - "8083:443"
+    cap_add:
+      - NET_ADMIN  
+  web5:
+    build:
+      context: .
+      dockerfile: ./P4-josedimasugr-apache/DockerFileApacheP4
+    image: josedimasugr-apache-image:p5
+    volumes:
+      - ./:/var/www/html/
+      - ./P4-josedimasugr-certificados:/etc/apache2/ssl/
+    networks:
+      red_web:
+        ipv4_address: 192.168.10.6
+      red_servicios:
+        ipv4_address: 192.168.20.6    
+    ports:
+      - "8084:443"
+    cap_add:
+      - NET_ADMIN  
+  web6:
+    build:
+      context: .
+      dockerfile: ./P4-josedimasugr-apache/DockerFileApacheP4
+    image: josedimasugr-apache-image:p5
+    volumes:
+      - ./:/var/www/html/
+      - ./P4-josedimasugr-certificados:/etc/apache2/ssl/
+    networks:
+      red_web:
+        ipv4_address: 192.168.10.7
+      red_servicios:
+        ipv4_address: 192.168.20.7    
+    ports:
+      - "8085:443"
+    cap_add:
+      - NET_ADMIN       
+  web7:
+    build:
+      context: .
+      dockerfile: ./P4-josedimasugr-apache/DockerFileApacheP4
+    image: josedimasugr-apache-image:p5
+    volumes:
+      - ./:/var/www/html/
+      - ./P4-josedimasugr-certificados:/etc/apache2/ssl/
+    networks:
+      red_web:
+        ipv4_address: 192.168.10.8
+      red_servicios:
+        ipv4_address: 192.168.20.8    
+    ports:
+      - "8086:443"
+    cap_add:
+      - NET_ADMIN  
+  web8:
+    build:
+      context: .
+      dockerfile: ./P4-josedimasugr-apache/DockerFileApacheP4
+    image: josedimasugr-apache-image:p5
+    volumes:
+      - ./:/var/www/html/
+      - ./P4-josedimasugr-certificados:/etc/apache2/ssl/
+    networks:
+      red_web:
+        ipv4_address: 192.168.10.9
+      red_servicios:
+        ipv4_address: 192.168.20.9    
+    ports:
+      - "8087:443"
+    cap_add:
+      - NET_ADMIN 
+
+  balanceador-nginx-ssl:
+    build:
+      context: .
+      dockerfile: ./P4-josedimasugr-nginx/DockerFileNginxP4
+    image: josedimasugr-nginx-image:p5
+    volumes:
+     - ./P4-josedimasugr-nginx/josedimasugr-nginx-ssl.conf:/etc/nginx/nginx.conf
+     - ./P4-josedimasugr-certificados:/etc/nginx/ssl/
+    networks:
+      red_web:
+        ipv4_address: 192.168.10.50
+    depends_on:
+      - web1
+      - web2
+      - web3
+      - web4
+      - web5
+      - web6
+      - web7
+      - web8
+    ports:
+      - "8089:443"         
+ 
+networks:
+  red_web:
+    external: true
+    ipam:
+      config:
+        - subnet: 192.168.10.0/24
+  red_servicios:
+    ipam:
+      config:
+        - subnet: 192.168.20.0/24
